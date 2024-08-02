@@ -1,0 +1,194 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="{% static  '/admin/css/style.css' %}">
+    <link rel="stylesheet" href="{% static  '/admin/css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static  '/admin/css/profil.css' %}">
+    
+    
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet" href="{% static  '/admin/bootstrap/css/bootstrap.min.css' %}">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    <title>Malumot</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+    <!-- HEADER -->
+    <header class="mb-5">
+        <div class="nav-bar container">
+            
+            <a href="{% url 'home' %}" class="logo d-flex align-items-center">
+                <img src="{% static  '/img/logo.png' %}" alt="logo image" width="36px" style="margin-right: 10px;">
+                <div class="logo-name" style="font-size: 0.8em; letter-spacing: 1px; line-height: 1; font-family: 'Poppins', sans-serif;">
+                    IJEP
+                </div>
+            </a>
+            
+            
+            <!-- tillar -->
+            <div class="d-flex align-items-center">
+                
+                <form action="{% url 'set_language' %}"  id="form-til"  method="post">
+                    {% csrf_token %}
+                    <input name="next" type="hidden" value="{{ redirect_to }}">
+                    <select class="tillar mx-2" id="tillar" name="language">
+                        {% get_current_language as LANGUAGE_CODE %}
+                        {% get_available_languages as LANGUAGES %}
+                        {% get_language_info_list for LANGUAGES as languages %}
+                        {% for language in languages %}
+                        <option class="til" value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                            {{ language.name_local.capitalize }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </form> 
+                <i class="uil uil-apps nav-menu-btn"></i>
+                
+                <div>
+                    <a class="btn btn-primary" href="{% url 'logout' %}">Chiqish</a>
+                </div>
+                
+            </div>
+            
+        </div>
+    </header>
+    
+    <div class="main-content">
+        <div class="container">
+            <!-- MENING KABINETIM -->
+            <div class="profil-bottom px-1">
+                <h2 class="profil-heading text-center my-4">Talaba ma'lumotlari</h2>
+                {% for t in data %}
+                <div class="row d-flex justify-content-between px-2">
+                    <!-- ITEM -->
+                    <div class="profil-info-item position-relative border border-primary col-md-4 rounded-2 mb-3">
+                        <div class="profil-info-item-title position-absolute top-0 translate-middle-y bg-white px-2"><b>PNFL</b></div>
+                        <div class="profil-info-item-item px-0 py-2">{{t.jshr}}</div>
+                    </div>
+                    <!-- ITEM -->
+                    <div class="profil-info-item position-relative border border-primary col-md-4 rounded-2 mb-3">
+                        <div class="profil-info-item-title position-absolute top-0 translate-middle-y bg-white px-2"><b>Passport seriya va raqami</b></div>
+                        <div class="profil-info-item-item px-0 py-2">{{t.pasport_serya}} {{t.pasport_raqam}}</div>
+                    </div>
+                    <!-- ITEM -->
+                    <div class="profil-info-item position-relative border border-primary col-md-3 rounded-2 mb-3">
+                        <div class="profil-info-item-title position-absolute top-0 translate-middle-y bg-white px-2"><b>Familiya</b></div>
+                        <div class="profil-info-item-item px-0 py-2">{{t.familiya}}</div>
+                    </div>
+                </div>
+                
+                <div class="row d-flex justify-content-between px-2">
+                    <!-- ITEM -->
+                    <div class="profil-info-item position-relative border border-primary col-md-4 rounded-2 mb-3">
+                        <div class="profil-info-item-title position-absolute top-0 translate-middle-y bg-white px-2"><b>Ism</b></div>
+                        <div class="profil-info-item-item px-0 py-2">{{t.ism}}</div>
+                    </div>
+                    <!-- ITEM -->
+                    <div class="profil-info-item position-relative border border-primary col-md-4 rounded-2 mb-3">
+                        <div class="profil-info-item-title position-absolute top-0 translate-middle-y bg-white px-2"><b>Otasining ismi</b></div>
+                        <div class="profil-info-item-item px-0 py-2">{{t.sharif}}</div>
+                    </div>
+                    <!-- ITEM -->
+                    <div class="profil-info-item position-relative border border-primary col-md-3 rounded-2 mb-3">
+                        <div class="profil-info-item-title position-absolute top-0 translate-middle-y bg-white px-2"><b>Yo'nalish</b></div>
+                        <div class="profil-info-item-item px-0 py-2">{{t.yonalish}}</div>
+                    </div>
+                </div>
+                
+                <div class="row d-flex justify-content-between px-2">
+                    <!-- ITEM -->
+                    <div class="profil-info-item position-relative border border-primary col-md-4 rounded-2 mb-3">
+                        <div class="profil-info-item-title position-absolute top-0 translate-middle-y bg-white px-2"><b>Attestat (diplom) seriya va raqami</b></div>
+                        <div class="profil-info-item-item px-0 py-2">{{t.diplom_serya_raqam}}</div>
+                    </div>
+                    <!-- ITEM -->
+                    <div class="profil-info-item position-relative border border-primary col-md-4 rounded-2 mb-3">
+                        <div class="profil-info-item-title position-absolute top-0 translate-middle-y bg-white px-2"><b>Bitirgan ta'lim muassasasi nomi</b></div>
+                        <div class="profil-info-item-item px-0 py-2">{{t.bitirgan_muassasa}}</div>
+                    </div>
+                    <!-- ITEM -->
+                    <div class="profil-info-item position-relative border border-primary col-md-3 rounded-2 mb-3">
+                        <div class="profil-info-item-title position-absolute top-0 translate-middle-y bg-white px-2"><b>Bitirgan yili</b></div>
+                        <div class="profil-info-item-item px-0 py-2">{{t.bitirgan_yil}}</div>
+                    </div>
+                    <!-- ITEM -->
+                    <div class="profil-info-item position-relative border border-primary col-md-4 rounded-2 mb-3">
+                        <div class="profil-info-item-title position-absolute top-0 translate-middle-y bg-white px-2"><b>Telefon raqami</b></div>
+                        <div class="profil-info-item-item px-0 py-2">{{t.telefon}}</div>
+                    </div>
+                </div>
+                
+                
+                <div class="container">
+                    <!-- Manzil -->
+                    <div class="amaliyot mb-3">
+                        <div class="d-flex flex-column flex-md-row justify-content-between text-center align-items-center border border-primary rounded-3 p-2 w-100">
+                            <h5 class="amaliyot-text mb-0">
+                                Passport rasmi
+                            </h5>
+                            <a class="amaliyot-btn btn btn-primary" href="{{t.pasport_rasm.url}}" download>Yuklab olish</a>
+                        </div>
+                    </div>
+                    <div class="amaliyot">
+                        <div class="d-flex flex-column flex-md-row justify-content-between text-center align-items-center border border-primary rounded-3 p-2 w-100">
+                            <h5 class="amaliyot-text mb-0">
+                                Attestat (diplom) rasmi
+                            </h5>
+                            <a class="amaliyot-btn btn btn-primary" href="{{t.diplom_rasm.url}}" download>Yuklab olish</a>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="amaliyot px-2">
+                    <h4 class="amaliyot-subtitle text-center my-3">Yashash manzili</h4>
+                    <div class="row d-flex justify-content-between">
+                        <!-- ITEM -->
+                        <div class="profil-info-item position-relative border border-primary col-md-4 rounded-2 mb-3">
+                            <div class="profil-info-item-title position-absolute top-0 translate-middle-y bg-white px-2"><b>Viloyat</b></div>
+                            <div class="profil-info-item-item px-0 py-2">{{t.viloyat}}</div>
+                        </div>
+                        <!-- ITEM -->
+                        <div class="profil-info-item position-relative border border-primary col-md-3 rounded-2 mb-3">
+                            <div class="profil-info-item-title position-absolute top-0 translate-middle-y bg-white px-2"><b>Tuman</b></div>
+                            <div class="profil-info-item-item px-0 py-2">{{t.tuman}}</div>
+                        </div>
+                        <!-- ITEM -->
+                        <div class="profil-info-item position-relative border border-primary col-md-4 rounded-2 mb-3">
+                            <div class="profil-info-item-title position-absolute top-0 translate-middle-y bg-white px-2"><b>Ko'cha va uy raqami</b></div>
+                            <div class="profil-info-item-item px-0 py-2">{{t.kocha}}</div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <h2 class="text-center">Bosh sahifaga qaytish</h2>
+    <a class="btn btn-primary" href="{% url 'home' %}">Bosh sahifa</a>
+    {% endif %}
+    
+    
+    <!-- BOOTSTRAP-JAVASCRIPT -->
+    <script src="{% static  '/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script>
+        const dropdown = document.getElementById("tillar");
+        
+        dropdown.addEventListener("change", function() {
+            
+            document.getElementById("form-til").submit();
+        });
+    </script>
+</body>
+</html>

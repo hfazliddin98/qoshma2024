@@ -1,0 +1,353 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TITLE -->
+    <title>sinov.kspi.uz</title>
+    
+    <!-- STYLES -->
+    <link rel="stylesheet" href="{% static  '/css/style.css' %}">
+    <link rel="stylesheet" href="{% static  '/css/normalize.css' %}">
+    
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet" href="{% static  '/bootstrap/css/bootstrap.min.css' %}">
+    
+    <!-- ICONS -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="nav-bar">
+            <a href="{% url 'home' %}" class="logo d-flex align-items-center">
+                <img src="{% static  '/img/logo.png' %}" alt="logo image" width="36px" style="margin-right: 10px;">
+                <div class="logo-name" style="font-size: 0.8em; letter-spacing: 1px; line-height: 1; font-family: 'Poppins', sans-serif;">
+                    IJEP
+                </div>
+            </a>
+            <div class="navigation">
+                <div class="nav-items">
+                    <i class="uil uil-times close-btn"></i>
+                    <a href="{% url 'home' %}"><i class="uil uil-home"></i> {% blocktrans %}Asosiy{% endblocktrans %}</a>
+                    <a href="{% url 'ariza_yuborish' %}"><i class="uil uil-document-layout-left"></i> {% blocktrans %}Online ariza{% endblocktrans %}</a>
+                    <a href="{% url 'home' %}"><i class="uil uil-info-circle"></i> {% blocktrans %}Ma'lumot{% endblocktrans %}</a>
+                    <a href="{% url 'home' %}"><i class="uil uil-newspaper"></i> {% blocktrans %}Yangiliklar{% endblocktrans %}</a>
+                    <a href="{% url 'qabul' %}"><i class="uil uil-newspaper"></i> {% blocktrans %}Qabul{% endblocktrans %}</a>
+                    <a href="#contact"><i class="uil uil-envelope"></i> {% blocktrans %}Bog'lanish{% endblocktrans %}</a>
+                </div>
+            </div>            
+            
+            <!-- tillar -->
+            <div class="d-flex align-items-center">
+                <form action="{% url 'set_language' %}" id="form-til"  method="post">
+                    {% csrf_token %}
+                    <input name="next" type="hidden" value="{{ redirect_to }}">
+                    <select class="tillar mx-2" id="tillar" name="language">
+                        {% get_current_language as LANGUAGE_CODE %}
+                        {% get_available_languages as LANGUAGES %}
+                        {% get_language_info_list for LANGUAGES as languages %}
+                        {% for language in languages %}
+                        <option class="til" value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                            {{ language.name_local.capitalize }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </form>          
+                <i class="uil uil-apps nav-menu-btn"></i>
+            </div>
+            
+        </div>
+    </header>
+    
+    <section class="home home-secondary">
+        <div class="swiper bg-slider bg-secondary">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide secondary">
+                    <div class="swiper-slide-img"><img src="{% static  '/img/img1.jpg' %}" alt=""></div>
+                    <div class="text-content">
+                        <h2 class="title">Qo'shma <span>Ta'lim</span></h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, labore? Et, ratione dolorum. Ducimus quae est repellendus, dolorem officia fugit! Quasi minus molestiae iusto, praesentium quam ratione numquam tempore incidunt!</p>
+                        <button class="read-btn"><a href="#">Ko'proq ma'lumot <i class="uil uil-arrow-right"></i></a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <h3 style="color: red;">{{data}}</h3>
+    <!-- Ariza -->
+    <section class="ariza section bg-light">
+        <h2 class="text-center">{% blocktrans %}Online ariza{% endblocktrans %}</h2>
+        <form enctype="multipart/form-data" method="POST" class="row g-3 needs-validation" novalidate>
+            {% csrf_token %} 
+            <div class="col-lg-4 col-md-6">
+                <label for="familiya" class="form-label">{% blocktrans %}Familiya{% endblocktrans %}</label>
+                <input name="familiya" type="text" class="form-control bosh-harf" id="familiya" placeholder="Familiya" required>
+                <div class="invalid-feedback">
+                    {% blocktrans %}Familiyangizni kiriting.!!{% endblocktrans %}
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <label for="ism" class="form-label">{% blocktrans %}Ism{% endblocktrans %}</label>
+                <input name="ism" type="text" class="form-control bosh-harf" id="ism" placeholder="Ism" required>
+                <div class="invalid-feedback">
+                    {% blocktrans %}Ismingizni kiriting!{% endblocktrans %}
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <label for="ism" class="form-label">{% blocktrans %}Otangizning ismi{% endblocktrans %}</label>
+                <input name="sharif" type="text" class="form-control bosh-harf" id="ism" placeholder="Otangizning ismi" required>
+                <div class="invalid-feedback">
+                    {% blocktrans %}Otangizning ismini kiriting!{% endblocktrans %}
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <label for="telefon" class="form-label">{% blocktrans %}Telefon raqam{% endblocktrans %}</label>
+                <input name="telefon" type="text" class="form-control" id="telefon" value="+998 " minlength="13" maxlength="14" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="Telefon raqam" required>
+                <div class="invalid-feedback">
+                    {% blocktrans %}Telefon raqamingizni kiriting!{% endblocktrans %}
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <label for="seriya" class="form-label">{% blocktrans %}Passport seriya{% endblocktrans %}</label>
+                <input name="pasport_serya" type="text" class="form-control" id="seriya" minlength="2" maxlength="2" placeholder="Passport seriya" required>
+                <div class="invalid-feedback">
+                    {% blocktrans %}Passport seriyangizni kiriting.!{% endblocktrans %}
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <label for="passport-raqam" class="form-label">{% blocktrans %}Passport raqam{% endblocktrans %}</label>
+                <input name="pasport_raqam" type="text" class="form-control" id="passport-raqam" minlength="7" maxlength="7" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="Passport raqam" required>
+                <div class="invalid-feedback">
+                    {% blocktrans %}Passport raqamingizni kiriting.!{% endblocktrans %}
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <label for="jshshir" class="form-label">{% blocktrans %}JShShIR{% endblocktrans %}</label>
+                <input name="jshr" type="text" class="form-control" id="jshshir" minlength="14" maxlength="14" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="JShShIR" required>
+                <div class="invalid-feedback">
+                    {% blocktrans %}JShShIRni kiriting.!{% endblocktrans %}
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <label for="passport-rasm" class="form-label">{% blocktrans %}Passport rasmi{% endblocktrans %}</label>
+                <input name="pasport_rasm" type="file" class="form-control" id="passport-rasm" accept=".png, .jpg, .jpeg" placeholder="Passport rasmi" required>
+                <div class="invalid-feedback">
+                    {% blocktrans %}Passport rasmingizni yuklang.!{% endblocktrans %}
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <label for="yil" class="form-label">{% blocktrans %}Bitirgan yili{% endblocktrans %}</label>
+                <select name="bitirgan_yil" class="form-select" id="yil" required>
+                    <option value="">{% blocktrans %}Yil{% endblocktrans %}</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                    <option value="2018">2018</option>
+                    <option value="2017">2017</option>
+                    <option value="2016">2016</option>
+                    <option value="2015">2015</option>
+                    <option value="2014">2014</option>
+                    <option value="2013">2013</option>
+                    <option value="2012">2012</option>
+                    <option value="2011">2011</option>
+                    <option value="2010">2010</option>
+                    <option value="2009">2009</option>
+                    <option value="2008">2008</option>
+                    <option value="2007">2007</option>
+                    <option value="2006">2006</option>
+                    <option value="2005">2005</option>
+                    <option value="2004">2004</option>
+                    <option value="2003">2003</option>
+                    <option value="2002">2002</option>
+                    <option value="2001">2001</option>
+                </select>
+                <div class="invalid-feedback">
+                    {% blocktrans %}Bitirgan yilingizni kiriting.!{% endblocktrans %}
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-6">
+                <label for="muassasa" class="form-label">{% blocktrans %}Bitirgan ta'lim muassasasi nomi{% endblocktrans %}</label>
+                <input name="bitirgan_muassasa" type="text" class="form-control bosh-harf" id="muassasa" placeholder="Bitirgan ta'lim muassasasi nomi" required>
+                <div class="invalid-feedback">
+                    {% blocktrans %}Bitirgan ta'lim muassasangiz nomini kiriting.!{% endblocktrans %}
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <label for="diplom" class="form-label">{% blocktrans %}Attestat (diplom) seriya va raqami{% endblocktrans %}</label>
+                <input name="diplom_serya_raqam" type="text" class="form-control" id="diplom" placeholder="Attestat (diplom) seriya va raqami" required>
+                <div class="invalid-feedback">
+                    {% blocktrans %}Attestat (diplom) seriya va raqami{% endblocktrans %}
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <label for="diplom-rasm" class="form-label">{% blocktrans %}Attestat (diplom) rasmi{% endblocktrans %}</label>
+                <input name="diplom_rasm" type="file" class="form-control" id="diplom-rasm" required>
+                <div class="invalid-feedback">
+                    {% blocktrans %}Diplom rasmini yuklang.!{% endblocktrans %}
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <label for="daraja" class="form-label">{% blocktrans %}Topshirilayotgan ta'lim darajasi{% endblocktrans %}</label>
+                <select name="daraja" class="form-select" id="daraja" required>
+                    <option selected disabled value="">{% blocktrans %}Daraja{% endblocktrans %}</option>
+                    <option>{% blocktrans %}Bakalavr{% endblocktrans %}</option>
+                    <option>{% blocktrans %}Magistratura{% endblocktrans %}</option>
+                </select>
+                <div class="invalid-feedback">
+                    {% blocktrans %}Darajangizni tanlang.!{% endblocktrans %}
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <label for="yonalish" class="form-label">{% blocktrans %}Yo'nalish{% endblocktrans %}</label>
+                <select name="yonalish" class="form-select" id="yonalish" onchange="showMessage()" required>
+                    <option selected disabled value="">{% blocktrans %}Yo'nalish{% endblocktrans %}</option>
+                </select>
+                <div class="invalid-feedback">
+                    {% blocktrans %}Yo'nalishingizni tanlang.!{% endblocktrans %}
+                </div>
+            </div>
+            
+            <h4 class="text-center">{% blocktrans %}Yashash manzili{% endblocktrans %}</h4>
+            <div class="col-lg-4 col-md-6 col-sm-6 mb-2">
+                <label for="region" class="form-label">{% blocktrans %}Viloyat{% endblocktrans %}</label>
+                <select name="viloyat" id="region" class="form-select" size="1" required aria-label="select example">
+                    <option selected="selected" value="" disabled>{% blocktrans %}Viloyat{% endblocktrans %}</option>
+                </select>
+                <div class="invalid-feedback">
+                    {% blocktrans %}Viloyatni tanlang.!{% endblocktrans %}
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 mb-2">
+                <label for="district" class="form-label">{% blocktrans %}Tuman{% endblocktrans %}</label>
+                <select name="tuman" id="district" class="form-select" size="1" required aria-label="select example">
+                    <option selected="selected" value="" disabled>{% blocktrans %}Tuman{% endblocktrans %}</option>
+                </select>
+                <div class="invalid-feedback">
+                    {% blocktrans %}Tumanni tanlang.!{% endblocktrans %}
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 mb-2">
+                <label for="street" class="form-label">{% blocktrans %}Ko'cha va uy raqami{% endblocktrans %}</label>
+                <input name="kocha" type="text" id="street"  class="form-control bosh-harf" placeholder="Ko'cha va uy raqami" required>
+                <div class="invalid-feedback">
+                    {% blocktrans %}Ko'cha va uy raqamini kiriting.!{% endblocktrans %}
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-check">
+                    <input name="rozilik" class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                    <label class="form-check-label" for="invalidCheck">
+                        {% blocktrans %}Shaxsiy ma'lumotlarimdan foydalanishga rozilik bildiraman.!{% endblocktrans %}
+                    </label>
+                    <div class="invalid-feedback">
+                        {% blocktrans %}Shaxsiy ma'lumotlarimdan foydalanishga rozilik bildiraman.{% endblocktrans %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary" type="submit">{% blocktrans %}Yuborish{% endblocktrans %}</button>
+            </div>
+        </form>
+    </section>
+    
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col col-lg-3 col-md-6">
+                    <h4>{% blocktrans %}IJEP{% endblocktrans %}</h4>
+                    <p>{% blocktrans %}Xorijiy oliy ta’lim muassasalari bilan hamkorlikda qo‘shma ta’lim dasturlari asosida kadrlar tayyorlash onlayn platformasi{% endblocktrans %}</p>
+                </div>
+                <div class="footer-col col-lg-3 col-md-6">
+                    <h4>{% blocktrans %}Telefon raqam{% endblocktrans %}</h4>
+                    <ul>
+                        <li><a href="tel: +998992226660">+998 99 222 66 60</a></li>
+                        <li><a href="tel: +998">+998 90 658 87 88</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col col-lg-3 col-md-6">
+                    <h4>{% blocktrans %}Email{% endblocktrans %}</h4>
+                    <ul>
+                        <li><a href="mailto: example@gmail.com">example@gmail.com</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col col-lg-3 col-md-6">
+                    <h4>{% blocktrans %}Ijtimoiy tarmoqlar{% endblocktrans %}</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="uil uil-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/kspi_sop/"><i class="uil uil-instagram"></i></a>
+                        <a href="#"><i class="uil uil-telegram"></i></a>
+                        <a href="#"><i class="uil uil-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- MESSAGE for OPTION -->
+    <div class="container">
+        <div id="message" class="px-3" style="display: none; position:fixed; top:50vh; transform:translateY(-50%); z-index: 100000; backdrop-filter: blur(20px);">
+            <div class="modal-information border border-danger rounded p-3">
+                <p>
+                    <b style="color: crimson;">{% blocktrans %}Izoh: {% endblocktrans %}</b>{% blocktrans %}Tanlangan mutaxassislikga topshirishi mumkin bo'lgan bakalavriat yo'nalishlari {% endblocktrans %}<br>
+                    {% blocktrans %}1. Ona tili va adabiyoti: rus tili va adabiyoti {% endblocktrans %}<br>
+                    {% blocktrans %}2. Ona tili va adabiyoti: o‘zbek tili va adabiyoti {% endblocktrans %}<br>
+                    {% blocktrans %}3. Xorijiy til va adabiyoti (ingliz tili va adabiyoti) {% endblocktrans %}<br>
+                    {% blocktrans %}4. Pedagogika{% endblocktrans %}
+                </p>
+                <button id="yopil" class="btn btn-primary" style="padding: 7px 17px;">OK</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JS -->
+    <script src="{% static  '/js/ariza-yuborish.js' %}"></script>
+    <script src="{% static  '/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script>
+        const dropdown = document.getElementById("tillar");
+        
+        dropdown.addEventListener("change", function() {
+            
+            document.getElementById("form-til").submit();
+        });
+        
+        
+        let daraja = document.querySelector('#daraja');
+        let yonalish = document.querySelector('#yonalish');
+        daraja.addEventListener('change', function () {
+            let selectedValue = daraja.options[daraja.selectedIndex].value;
+            if(selectedValue === 'Bakalavr') {
+                yonalish.innerHTML = ` 
+                <option selected disabled value="">{% blocktrans %}Yo'nalish{% endblocktrans %}</option>
+                <option value="Psixologiya (amaliy psixologiya)">{% blocktrans %}Psixologiya (amaliy psixologiya){% endblocktrans %}</option>
+                <option value="Ona tili va adabiyoti: Rus tili va adabiyoti">{% blocktrans %}Ona tili va adabiyoti: Rus tili va adabiyoti{% endblocktrans %}</option>
+                <option value="Matematika va informatika">{% blocktrans %}Matematika va informatika{% endblocktrans %}</option> `
+            } else if(selectedValue === '{% blocktrans %}Magistratura{% endblocktrans %}') {
+                yonalish.innerHTML = `
+                <option selected disabled value="">{% blocktrans %}Mutaxassislik{% endblocktrans %}</option>
+                <option value="Ta'limda axborot texnologiyalari">{% blocktrans %}Ta'limda axborot texnologiyalari{% endblocktrans %}</option>
+                <option value="Ona tili va adabiyoti: Rus tili va adabiyot">{% blocktrans %}Ona tili va adabiyoti: Rus tili va adabiyot{% endblocktrans %}</option>`
+            }
+        })
+        // MESSAGE for OPTION
+        let yopil = document.getElementById('yopil')
+        function showMessage() {
+            let selectedValue2 = yonalish.options[yonalish.selectedIndex].value;
+            if(selectedValue2 === "{% blocktrans %}Ona tili va adabiyoti: Rus tili va adabiyot{% endblocktrans %}") {
+                var messageElement = document.getElementById('message');
+                messageElement.style.display = 'block';
+            }
+            
+            yopil.addEventListener('click', ()=> {
+                messageElement.style.display = 'none';
+            })
+        }
+        
+    </script>   
+</body>
+</html>

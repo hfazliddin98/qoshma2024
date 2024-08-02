@@ -1,0 +1,367 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- TITLE -->
+    <title>sinov.kspi.uz</title>
+    
+    <!-- STYLES -->
+    <link rel="stylesheet" href="{% static  '/css/style.css' %}">
+    <link rel="stylesheet" href="{% static  '/css/normalize.css' %}">
+    
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet" href="{% static  '/bootstrap/css/bootstrap.min.css' %}">    
+    
+    <!-- ICONS -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <style>
+        
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="nav-bar">
+            
+            <a href="{% url 'home' %}" class="logo d-flex align-items-center">
+                <img src="{% static  '/img/logo.png' %}" alt="logo image" width="36px" style="margin-right: 10px;">
+                <div class="logo-name" style="font-size: 0.8em; letter-spacing: 1px; line-height: 1; font-family: 'Poppins', sans-serif;">
+                    IJEP
+                </div>
+            </a>
+            <div class="navigation">
+                <div class="nav-items">
+                    <i class="uil uil-times close-btn"></i>
+                    <a href="{% url 'home' %}"><i class="uil uil-home"></i> {% blocktrans %}Asosiy{% endblocktrans %}</a>
+                    <a href="{% url 'ariza_yuborish' %}"><i class="uil uil-document-layout-left"></i> {% blocktrans %}Online ariza{% endblocktrans %}</a>
+                    <a href="{% url 'home' %}"><i class="uil uil-info-circle"></i> {% blocktrans %}Ma'lumot{% endblocktrans %}</a>
+                    <a href="{% url 'home' %}"><i class="uil uil-newspaper"></i> {% blocktrans %}Yangiliklar{% endblocktrans %}</a>
+                    <a href="{% url 'qabul' %}"><i class="uil uil-newspaper"></i> {% blocktrans %}Qabul{% endblocktrans %}</a>
+                    <a href="#contact"><i class="uil uil-envelope"></i> {% blocktrans %}Bog'lanish{% endblocktrans %}</a>
+                </div>
+            </div>            
+            
+            <!-- tillar -->
+            <div class="d-flex align-items-center">
+                <form action="{% url 'set_language' %}" id="form-til"  method="post">
+                    {% csrf_token %}
+                    <input name="next" type="hidden" value="{{ redirect_to }}">
+                    <select class="tillar mx-2" id="tillar" name="language">
+                        {% get_current_language as LANGUAGE_CODE %}
+                        {% get_available_languages as LANGUAGES %}
+                        {% get_language_info_list for LANGUAGES as languages %}
+                        {% for language in languages %}
+                        <option class="til" value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                            {{ language.name_local.capitalize }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </form>          
+                <i class="uil uil-apps nav-menu-btn"></i>
+            </div>
+            
+        </div>
+    </header>
+    
+    <section class="home home-secondary">
+        <div class="swiper bg-slider bg-secondary">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide secondary">
+                    <div class="swiper-slide-img"><img src="{% static  '/img/img1.jpg' %}" alt=""></div>                    
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    <!-- Qabul -->
+    <section class="ariza section bg-light">
+        <div class="container">
+            <h5 class="text-center mb-4">С 5 августа по 5 сентября 2023 года Кокандский государственный педагогический институт имени Мукими начинает прием документов на совместные образовательные программы в сотрудничестве с Россией и Белоруссией по специальностям бакалавриата и магистратуры на 2023/2024 учебный год</h5>
+            <table class="mb-5 text-center table-bordered">
+                <thead>
+                    <tr>
+                        <th>Шифр</th>
+                        <th>Направление (специалитет) обучения</th>
+                        <th>Название зарубежного высшего образовательного учреждения</th>
+                        <th>Квоты для обучения на платно-контрактной основе</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-primary">
+                        <td></td>
+                        <td>Бакалавриат</td>
+                        <td></td>
+                        <td>75</td>
+                    </tr>
+                    <tr>
+                        <td>60310900</td>
+                        <td>Психология (практическая психология)</td>
+                        <td>Республика Беларусь, Гродненский государственный университет имени Янки Купалы</td>
+                        <td>25</td>
+                    </tr>
+                    <tr>
+                        <td>60111500</td>
+                        <td>Родной язык и литература: русский язык и литература</td>
+                        <td>Российская Федерация, Елабужский институт Казанского (Приволжского) федерального университета</td>
+                        <td>25</td>
+                    </tr>
+                    <tr>
+                        <td>60110600</td>
+                        <td>Математика и информатика</td>
+                        <td>Российская Федерация, Елабужский институт Казанского (Приволжского) федерального университета</td>
+                        <td>25</td>
+                    </tr>
+                    <tr class="table-primary">
+                        <td></td>
+                        <td>Магистратура</td>
+                        <td></td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>70110602</td>
+                        <td>Информационные технологии в образовании</td>
+                        <td>Российская Федерация, Елабужский институт Казанского (Приволжского) федерального университета</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>70111501</td>
+                        <td>Родной язык и литература: русский язык и литература</td>
+                        <td>Российская Федерация, Елабужский институт Казанского (Приволжского) федерального университета</td>
+                        <td>12</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                Язык обучения – Русский. Продолжительность обучения бакалавриат 4 года (2 + 2), магистратура 2 года (1+1). Вступительные экзамены по блокам: по специальности, русский язык. <br>
+                  Желающим учиться по этим совместным образовательным программам необходимо по ссылке https://sinov.kspi.uz и загрузить необходимую информацию (правила регистрации здесь) и загрузить электронные копии следующих документов (отсканированных, а не сфотографированных) в формате PDF. <br>
+                - Необходимо предоставить полную информацию о заявителе (адрес проживания, адрес электронной почты, номера телефонов); <br>
+                - Аттестат или диплом об образовании и его вкладыш; <br>
+                - Национальный паспорт (Главная страница и место прописки); <br>
+                <br>
+                <b>Контактный телефон:</b> <br>
+                +998 91 742 57 22  (Каршиева Шахноза) <br>
+                +998 90 343 48 65 (Мамаджанова Гулхаё) <br>
+                <br>
+                Время обращения: рабочие дни с 9:00 до 18:00. <br>
+                e-mail: sopkspi@gmail.com <br>
+                телеграмм: @kspi_sop_abitur
+                
+            </p>
+            
+            
+        </div>
+        
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        Психология (практическая психология) (Бакалавриат)
+                    </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <p class="text-center">Информация по приёму документов абитуриентов для обучения по совместной образовательной образовательной программе </p>
+                        <p class="text-center">Гродненский государственнқй  университет имени Янки Купалы </p>
+                        <p class="text-center">I степень образования (Бакалавриат) </p>
+                        <p><b>Направление обучения</b> – 60310900 - Психология (практическая психология) / «6-05-0313-01- Психология» </p>
+                        <p><b>Квота приема на 2023/2024 учебный год</b> - 25 мест; </p>
+                        <p><b>Язык обучения</b> - русский; </p>
+                        <p><b>Сумма контракта</b> – - 1700 долларов США за один учебный год.  </p>
+                        <p>Обучение по СОП осуществляется только на контрактной основе, выплаты стипендий для студентов не предусматриваются. </p>
+                        <p>Обучение проводится по схеме «2+2», первые 2 года в Кокандском государственном педагогическом институте, следующие 2 года в Гродненском государственном университете имени Янки Купалы. Студенты, обучающиеся по данной совместной образовательной программе, получат дипломы двух партнерских вузов (Double Degree). </p>
+                        <p class="text-center"><b>Условия приема документов: </b></p>
+                        <p>1.Сканированный вариант паспорта заявителя и его заверенный перевод (в электронном виде).  </p>
+                        <p>2.Сканированный вариант документа об образовании (аттестат, диплом о средне-специальном образовании) и его заверенный перевод </p>
+                        
+                        <p class="text-center"><b>Порядок проведения вступительных экзаменов: </b></p>
+                        <p>Вступительные экзамены будут проводится на основе онлайн собеседования по специальности, также тесты по дисциплине «русский язык».  </p>
+                        <p class="text-center"><b>Дополнительные условия:</b> </p>
+                        <p>В соответствии с постановлением Кабинета Министров Республики Узбекистан № 393 от 20 июня 2017 года студентам, обучающимся на СОП (за исключением совместной образовательной программы) не предусмотрены перевод и восстановление учебного процесса. Высшее учебное заведение обеспечивает студента местом проживания в общежитии. Оплата за место проживания осуществляется студентом. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        Родной язык и литература: русский язык и литература (Бакалавриат)
+                    </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <p class="text-center">Елабужский институт Казанского федерального университета </p>
+                        <p class="text-center">I степень образования (Бакалавриат) </p>
+                        
+                        <p><b>Направление обучения</b> – 60111500 - «Родной язык и литература: Русский язык и литература»  / 44.03.05 «Педагогическое образование (с двумя профилями подготовки) Профиль «Русский язык и литература» </p>
+                        <p><b>Квота приема на 2023/2024 учебный год</b> - 25 мест;</p>
+                        <p><b>Язык обучения</b> - русский; </p>
+                        <p>Обучение по СОП осуществляется только на контрактной основе, выплаты стипендий для студентов не предусматриваются. </p>
+                        <p>Обучение проводится по схеме «2+2», первые 2 года в Кокандском государственном педагогическом институте, следующие 2 года в Елабужском институте Казанского федерального университета. Студенты, обучающиеся по данной совместной образовательной программе, получат дипломы двух партнерских вузов (Double Degree). </p>
+                        
+                        <p class="text-center"><b>Условия приема документов:</b> </p>
+                        <p>1.Сканированный вариант паспорта заявителя и его заверенный перевод (в электронном виде).  </p>
+                        <p>2.Сканированный вариант документа об образовании (аттестат, диплом о средне-специальном образовании) и его заверенный перевод. </p>
+                        
+                        <p class="text-center"><b>Порядок проведения вступительных экзаменов:</b> </p>
+                        <p>Вступительные экзамены будут проводится на основе онлайн собеседования по специальности, также тесты по дисциплине «русский язык». </p>
+                        
+                        <p class="text-center"><b>Дополнительные условия:</b> </p>
+                        <p>В соответствии с постановлением Кабинета Министров Республики Узбекистан № 393 от 20 июня 2017 года студентам, обучающимся на СОП (за исключением совместной образовательной программы) не предусмотрены перевод и восстановление учебного процесса. Высшее учебное заведение обеспечивает студента местом проживания в общежитии. Оплата за место проживания осуществляется студентом. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                        Математика и информатика (Бакалавриат)
+                    </button>
+                </h2>
+                <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <p class="text-center">Елабужский институт Казанского федерального университета</p>
+                        <p class="text-center">I степень образования (Бакалавриат)</p>
+                        
+                        <p><b>Направление обучения</b> 60110600 - «Математика и информатика» / 44.03.05 Педагогическое образование Профиль: «Математика и Информатика»</p>
+                        <p><b>Квота приема на 2023/2024 учебный год</b> - 25 мест;</p>
+                        <p><b>Язык обучения</b> - русский;</p>
+                        <p>Обучение по СОП осуществляется только на контрактной основе, выплаты стипендий для студентов не предусматриваются.</p> 
+                        <p>Обучение проводится по схеме «2+2», первые 2 года в Кокандском государственном педагогическом институте, следующие 2 года в Елабужском институте Казанского федерального университета. Студенты, обучающиеся по данной совместной образовательной программе, получат дипломы двух партнерских вузов (Double Degree).</p> 
+                        
+                        <p class="text-center"><b>Условия приема документов:</b></p>
+                        <p>1.Сканированный вариант паспорта заявителя и его заверенный перевод (в электронном виде).</p> 
+                        <p>2.Сканированный вариант документа об образовании (аттестат, диплом о средне-специальном образовании) и его заверенный перевод.</p>
+                        
+                        <p class="text-center"><b>Порядок проведения вступительных экзаменов:</b></p>
+                        <p>Вступительные экзамены будут проводится на основе онлайн собеседования по специальности, также тесты по дисциплине «русский язык».</p> 
+                        
+                        <p class="text-center"><b>Дополнительные условия:</b></p>
+                        <p>В соответствии с постановлением Кабинета Министров Республики Узбекистан № 393 от 20 июня 2017 года студентам, обучающимся на СОП (за исключением совместной образовательной программы) не предусмотрены перевод и восстановление учебного процесса. Высшее учебное заведение обеспечивает студента местом проживания в общежитии. Оплата за место проживания осуществляется студентом.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                        Информационные технологии в образовании (Магистратура)
+                    </button>
+                </h2>
+                <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <p class="text-center">Елабужский институт Казанского федерального университета</p>
+                        <p class="text-center">II степень образования (Магистратура)</p>
+                        <p><b>Специальность</b> – Информационные технологии в образовании / Цифровое образование</p>
+                        <p><b>Квота приема на 2023/2024 учебный год</b> - 12 мест;</p>
+                        <p><b>Язык обучения</b> - русский;</p>
+                        <p>Сумма контракта – 149 520 (сто сорок девять тысяч пятьсот двадцать рублей РФ за один учебный год.</p>
+                        <p>Обучение по СОП осуществляется только на контрактной основе, выплаты стипендий для студентов не предусматриваются. </p>
+                        <p>Обучение проводится по схеме «1+1», 1 год в Кокандском государственном педагогическом институте, следующие 1 года в Елабужском институте Казанского федерального университета. Студенты, обучающиеся по данной совместной образовательной программе, получат дипломы двух партнерских вузов (Double Degree). </p>
+                        
+                        <p class="text-center"><b> Условия приема документов:</b></p>
+                        <p>1.	Наличие диплома бакалавра (предоставляется сканированный вариант с вкладышем) и его заверенный перевод:</p>
+                        
+                        <p>2.	Сканированный вариант паспорта заявителя (в электронном виде) и его заверенный перевод. </p>
+                        
+                        <p class="text-center"><b>Порядок проведения вступительных экзаменов:</b></p>
+                        <p>Вступительные экзамены будут проводится на основе онлайн собеседования по специальности, также тесты по дисциплине «русский язык». </p>
+                        
+                        <p class="text-center"><b>Дополнительные условия:</b></p>
+                        <p>В соответствии с постановлением Кабинета Министров Республики Узбекистан № 393 от 20 июня 2017 года студентам, обучающимся на СОП (за исключением совместной образовательной программы) не предусмотрены перевод и восстановление учебного процесса. Высшее учебное заведение обеспечивает студента местом проживания в общежитии. Оплата за место проживания осуществляется студентом.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+                        Родной язык и литература: русский язык и литература (Магистратура)
+                    </button>
+                </h2>
+                <div id="flush-collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <p class="text-center">(Магистратура)</p>
+                        <p class="text-center">II степень образования (Магистратура)</p>
+                        
+                        <p><b>Специальность</b> – 70111501 - «Родной язык и литература: русский язык и литература  / 44.04.01 Педагогическое образование Профиль «Русский язык в межкультурной коммуникации» </p>
+                        <p><b>Квота приема на 2023/2024 учебный год</b> - 12 мест;</p>
+                        <p><b>Язык обучения</b> - русский;</p>
+                        <p>Обучение по СОП осуществляется только на контрактной основе, выплаты стипендий для студентов не предусматриваются. </p>
+                        <p>Обучение проводится по схеме «1+1», 1 год в Кокандском государственном педагогическом институте, следующие 1 года в Елабужском институте Казанского федерального университета. Студенты, обучающиеся по данной совместной образовательной программе, получат дипломы двух партнерских вузов (Double Degree). </p>
+                        <p class="text-center"><b>Условия приема документов:</b></p>
+                        <p>1.	Наличие диплома бакалавра по направлениям (предоставляется сканированный вариант с вкладышем) и его заверенный перевод:</p>
+                        <p>-	Родной язык и литература: Русский язык и литература;</p>
+                        <p>-	Родной язык и литература: Узбекский язык и литература;</p>
+                        <p>-	Английский язык и литература;</p>
+                        <p>-	Педагогика.</p>
+                        
+                        <p>2.	Сканированный вариант паспорта заявителя и его заверенный перевод (в электронном виде). </p>
+                        <p class="text-center"><b>Порядок проведения вступительных экзаменов:</b></p>
+                        <p>Вступительные экзамены будут проводится на основе онлайн собеседования по специальности, также тесты по дисциплине «русский язык». </p>
+                        <p class="text-center"><b>Дополнительные условия:</b></p>
+                        <p>В соответствии с постановлением Кабинета Министров Республики Узбекистан № 393 от 20 июня 2017 года студентам, обучающимся на СОП (за исключением совместной образовательной программы) не предусмотрены перевод и восстановление учебного процесса. Высшее учебное заведение обеспечивает студента местом проживания в общежитии. Оплата за место проживания осуществляется студентом.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+    
+    <!-- FOOTER -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col col-lg-3 col-md-6">
+                    <h4>IJEP</h4>
+                    <p>{% blocktrans %}Xorijiy oliy ta’lim muassasalari bilan hamkorlikda qo‘shma ta’lim dasturlari asosida kadrlar tayyorlash onlayn platformasi{% endblocktrans %}</p>
+                </div>
+                <div class="footer-col col-lg-3 col-md-6">
+                    <h4>{% blocktrans %}Telefon raqam{% endblocktrans %}</h4>
+                    <ul>
+                        <li><a href="tel: +998917425722">+998 91 742 57 22</a></li>
+                        <li><a href="tel: +998903434865">+998 90 343 48 65</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col col-lg-3 col-md-6">
+                    <h4>{% blocktrans %}Email{% endblocktrans %}</h4>
+                    <ul>
+                        <li><a href="mailto: example@gmail.com">sopkspi@gmail.com</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col col-lg-3 col-md-6">
+                    <h4>{% blocktrans %}Ijtimoiy tarmoqlar{% endblocktrans %}</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="uil uil-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/kspi_sop/"><i class="uil uil-instagram"></i></a>
+                        <a href="https://t.me/kspi_sop_abitur"><i class="uil uil-telegram"></i></a>
+                        <a href="#"><i class="uil uil-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="{% static  '/js/swiper-bundle.min.js' %}"></script>
+    <script src="{% static  '/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script>
+        // tillar
+        const dropdown = document.getElementById("tillar");
+        
+        dropdown.addEventListener("change", function() {
+            
+            document.getElementById("form-til").submit();
+        });
+        // MOBILE
+        let navigation = document.querySelector(".navigation");
+        let menu = document.querySelector(".nav-menu-btn");
+        let close = document.querySelector(".close-btn");
+        menu.addEventListener("click", () => {
+            navigation.style.display = "flex";
+        })
+        close.addEventListener("click", () => {
+            navigation.style.display = "none";
+        })
+    </script>
+</body>
+</html>

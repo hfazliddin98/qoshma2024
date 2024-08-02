@@ -1,0 +1,321 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="uzb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TITLE -->
+    <title>sinov.kspi.uz</title>
+    
+    <!-- STYLES -->
+    <link rel="stylesheet" href="{% static  '/css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static  '/css/style.css' %}">
+    <link rel="stylesheet" href="{% static  '/css/normalize.css' %}">
+    
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet" href="{% static  '/bootstrap/css/bootstrap.min.css' %}">
+    
+    <!-- ICONS -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="nav-bar">
+            <a href="{% url 'home' %}" class="logo d-flex align-items-center">
+                <img src="{% static  '/img/logo.png' %}" alt="logo image" width="36px" style="margin-right: 10px;">
+                <div class="logo-name" style="font-size: 0.8em; letter-spacing: 1px; line-height: 1; font-family: 'Poppins', sans-serif;">
+                    IJEP
+                </div>
+            </a>
+            <div class="navigation">
+                <div class="nav-items">
+                    <i class="uil uil-times close-btn"></i>
+                    <a href="{% url 'home' %}"><i class="uil uil-home"></i> {% blocktrans %}Asosiy{% endblocktrans %}</a>
+                    <a href="{% url 'ariza_yuborish' %}"><i class="uil uil-document-layout-left"></i> {% blocktrans %}Online ariza{% endblocktrans %}</a>
+                    <a href="#about"><i class="uil uil-info-circle"></i> {% blocktrans %}Ma'lumot{% endblocktrans %}</a>
+                    <a href="#news"><i class="uil uil-newspaper"></i> {% blocktrans %}Yangiliklar{% endblocktrans %}</a>
+                    <a href="{% url 'qabul' %}"><i class="uil uil-newspaper"></i> {% blocktrans %}Qabul{% endblocktrans %}</a>
+                    <a href="#contact"><i class="uil uil-envelope"></i> {% blocktrans %}Bog'lanish{% endblocktrans %}</a>
+                </div>
+            </div>            
+            
+            <!-- tillar -->
+            <div class="d-flex align-items-center">
+                <form action="{% url 'set_language' %}"  id="form-til"  method="post">
+                    {% csrf_token %}
+                    <input name="next" type="hidden" value="{{ redirect_to }}">
+                    <select class="tillar mx-2" id="tillar" name="language">
+                        {% get_current_language as LANGUAGE_CODE %}
+                        {% get_available_languages as LANGUAGES %}
+                        {% get_language_info_list for LANGUAGES as languages %}
+                        {% for language in languages %}
+                        <option class="til" value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                            {{ language.name_local.capitalize }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </form>          
+                <i class="uil uil-apps nav-menu-btn"></i>
+            </div>
+            
+        </div>
+    </header>
+    
+    <section class="home">
+        <div class="media-icons">
+            <a href="#"><i class="uil uil-facebook-f"></i></a>
+            <a href="https://www.instagram.com/kspi_sop/"><i class="uil uil-instagram"></i></a>
+            <a href="https://t.me/kspi_sop_abitur"><i class="uil uil-telegram"></i></a>
+        </div>
+        <div class="swiper bg-slider">
+            
+            
+            <div class="swiper-wrapper">
+                <div class="swiper-slide dark-layer">
+                    <div class="swiper-slide-img"><img src="{% static  '/img/all1.jpg' %}" alt=""></div>
+                    <div class="text-content">
+                        <h3 class="title">{% blocktrans %}Qo'shma ta'lim dasturlari{% endblocktrans %}</h3>
+                        <p>{% blocktrans %}Qo‘shma ta'lim  dasturlarida taxsil olayotgan talabalar xamkor xorijiy oliy ta'lim muaasasalari tomonidan o‘tkazilayotgan ilmiy-amaliy konferentsiyalar, seminar - trening, ijodiy tadbirlar, festivallarda faol ishtirok eti, sertifikatlar va diplomlar bilan taqdirlanganlar!{% endblocktrans %}
+                        </p>
+                        <button class="read-btn"><a href="{% url 'ariza_yuborish' %}">{% blocktrans %}Ariza yuborish{% endblocktrans %}<i class="uil uil-arrow-right"></i></a></button>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="swiper-slide-img"><img src="{% static  '/img/img1.jpg' %}" alt=""></div>
+                    <div class="text-content">
+                        <h3 class="title">{% blocktrans %}Qo'shma ta'lim dasturlari{% endblocktrans %}</h3>
+                        <p>{% blocktrans %}Qoʻqon davlat pedagogika instituti 2019-yildan boshlab xorijiy oliy taʼlim muassasalari bilan hamkorlikda qoʻshma taʼlim dasturlari boʻyicha kadrlar tayyorlashda talabalarga ikki tomonlama tan olingan diplom berish imkoniyatini beradigan qoʻshma taʼlim dasturlarining(Double degree programs) joriy etib kelmoqda!{% endblocktrans %}
+                        </p>
+                        <button class="read-btn"><a href="{% url 'ariza_yuborish' %}">{% blocktrans %}Ariza yuborish{% endblocktrans %}<i class="uil uil-arrow-right"></i></a></button>
+                    </div>
+                </div>
+                <div class="swiper-slide dark-layer">
+                    <div class="swiper-slide-img"><img src="{% static  '/img/img2.jpg' %}" alt=""></div>
+                    <div class="text-content">
+                        <h3 class="title">{% blocktrans %}Qo'shma ta'lim dasturlari{% endblocktrans %}</h3>
+                        <p>{% blocktrans %}Qo‘shma ta'lim  dasturlarida taxsil olayotgan talabalar xamkor xorijiy oliy ta'lim muaasasalari tomonidan o‘tkazilayotgan ilmiy-amaliy konferentsiyalar, seminar - trening,ijodiy tadbirlar, festivallarda faol ishtirok eti, sertifikatlar va diplomlar bilan taqdirlanganlar!{% endblocktrans %}
+                        </p>
+                        <button class="read-btn"><a href="{% url 'ariza_yuborish' %}">{% blocktrans %}Ariza yuborish{% endblocktrans %}<i class="uil uil-arrow-right"></i></a></button>
+                    </div>
+                </div>
+                <div class="swiper-slide dark-layer">
+                    <div class="swiper-slide-img"><img src="{% static  '/img/img3.jpg' %}" alt=""></div>
+                    <div class="text-content">
+                        <h3 class="title">{% blocktrans %}Qo'shma ta'lim dasturlari{% endblocktrans %}</h3>
+                        <p>{% blocktrans %}Qoʻqon davlat pedagogika instituti 2019-yildan boshlab xorijiy oliy taʼlim muassasalari bilan hamkorlikda qoʻshma taʼlim dasturlari boʻyicha kadrlar tayyorlashda talabalarga ikki tomonlama tan olingan diplom berish imkoniyatini beradigan qoʻshma taʼlim dasturlarining(Double degree programs) joriy etib kelmoqda!{% endblocktrans %}
+                        </p>
+                        <button class="read-btn"><a href="{% url 'ariza_yuborish' %}">{% blocktrans %}Ariza yuborish{% endblocktrans %}<i class="uil uil-arrow-right"></i></a></button>
+                    </div>
+                </div>
+                <div class="swiper-slide dark-layer">
+                    <div class="swiper-slide-img"><img src="{% static  '/img/img4.jpg' %}" alt=""></div>
+                    <div class="text-content">
+                        <h3 class="title">{% blocktrans %}Qo'shma ta'lim dasturlari{% endblocktrans %}</h3>
+                        <p>{% blocktrans %}Qo‘shma ta'lim  dasturlarida taxsil olayotgan talabalar xamkor xorijiy oliy ta'lim muaasasalari tomonidan o‘tkazilayotgan ilmiy-amaliy konferentsiyalar, seminar - trening, ijodiy tadbirlar, festivallarda faol ishtirok eti, sertifikatlar va diplomlar bilan taqdirlanganlar!{% endblocktrans %}
+                        </p>
+                        <button class="read-btn"><a href="{% url 'ariza_yuborish' %}">{% blocktrans %}Ariza yuborish{% endblocktrans %}<i class="uil uil-arrow-right"></i></a></button>
+                    </div>
+                </div>
+                <div class="swiper-slide dark-layer">
+                    <div class="swiper-slide-img"><img src="{% static  '/img/all3.jpg' %}" alt=""></div>
+                    <div class="text-content">
+                        <h3 class="title">{% blocktrans %}Qo'shma ta'lim dasturlari{% endblocktrans %}</h3>
+                        <p>{% blocktrans %}Qoʻqon davlat pedagogika instituti 2019-yildan boshlab xorijiy oliy taʼlim muassasalari bilan hamkorlikda qoʻshma taʼlim dasturlari boʻyicha kadrlar tayyorlashda talabalarga ikki tomonlama tan olingan diplom berish imkoniyatini beradigan qoʻshma taʼlim dasturlarining(Double degree programs) joriy etib kelmoqda!{% endblocktrans %}
+                        </p>
+                        <button class="read-btn"><a href="{% url 'ariza_yuborish' %}">{% blocktrans %}Ariza yuborish{% endblocktrans %}<i class="uil uil-arrow-right"></i></a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+        
+        <div class="bg-slider-thumbs">
+            <div class="swiper-wrapper thumbs-container">
+                <img src="{% static  '/img/all1.jpg' %}" class="swiper-slide" alt="">
+                <img src="{% static  '/img/img1.jpg' %}" class="swiper-slide" alt="">
+                <img src="{% static  '/img/img2.jpg' %}" class="swiper-slide" alt="">
+                <img src="{% static  '/img/img3.jpg' %}" class="swiper-slide" alt="">
+                <img src="{% static  '/img/img4.jpg' %}" class="swiper-slide" alt="">
+                <img src="{% static  '/img/all3.jpg' %}" class="swiper-slide" alt="">
+            </div>
+        </div>
+        
+    </section>
+    
+    
+    <!-- About -->
+    <section id="about" class="about section bg-light">
+        <div class="container">
+            <h2 class="text-center">{% blocktrans %}Qo'shma ta'lim haqida{% endblocktrans %}</h2>
+        </div>
+        <p class="text-center">
+            
+            <p>{% blocktrans %}Qoʻqon davlat pedagogika instituti 2019-yildan boshlab xorijiy oliy taʼlim muassasalari bilan hamkorlikda qoʻshma taʼlim dasturlari boʻyicha kadrlar tayyorlashda talabalarga ikki tomonlama tan olingan diplom berish imkoniyatini beradigan qoʻshma taʼlim dasturlarining (Double degree programs) joriy etib kelmoqda.{% endblocktrans %}
+            </p>
+            
+            <p>{% blocktrans %}Hozirda Rossiya Federatsiyasining Qozon federal universiteti, M.Akmulla nomidagi Boshqird davlat pedagogika universiteti, Rossiya davlat kasb hunar pedagogika universiteti, Qozon federal universiteti filiallari Elabuga instituti, V.Korolenko nomidagi Glazov davlat pedagogika instituti, Belarus Respublikasining Yanka Kupala nomidagi Grodno davlat universiteti xorijiy oliy talim muassalari bilan 6 ta bakalavr taʼlim yoʻnalishi va 1 ta magistratura mutaxassisligi boʻyicha talabalar taʼlim olishini taʼminlangan.{% endblocktrans %}
+            </p>
+            
+            <p>{% blocktrans %}Vazilar Mahkamasining 6-iyul 2023 yildagi 421 sonli qarori bilan tasdiqlangan “O‘zbekiston Respublikasi va xorijiy hamkor oliy ta'lim tashkilotlarining qo‘shma ta'lim dasturlari asosida ta'lim faoliyatini tashkil etish taptibi tug‘risida”gi Nizomi asosida Qo‘qon davlat pedagogika instituti va xorijiy hamkor oliy ta'lim muassasalari o‘rtasida imzolangan shartnomaga muvofiq bakalavriyat ta'lim yo'nalishlarida 1 - 4 semestr - Qo'qon davlat pedagogika institutida, 5-8 semestr - hamkor oliy ta'lim muassasalarida, magistratura mutaxassisligida 1 kurs – Qo’qon davlat pedagogika institutida, 2 - kurs hamkor oliy talim muassasalarida tashkil etilgan. Ta'lim shakli kunduzgi, ta'lim dasturi bo'yicha o'qitish tili rus tilidir.{% endblocktrans %}
+            </p>
+            
+            <p>{% blocktrans %}Talabalar qo’shma ta’lim dasrurini  to'liq o'zlashtirgandan so'ng va har ikki tomon vakillari ishtirokidagi yakuniy attestatsiyadan muvaffaqiyatli o'tgandan so'ng talabaga qonun hujjatlariga muvofiq xorijiy oliy taʼlim muassasasi hamda Qoʻqon davlat pedagogika instituti diplomi beriladi{% endblocktrans %}
+            </p>
+            
+            <p>{% blocktrans %}2023-2024 o‘quv yili uchun xorijiy oliy ta’lim muassasasi bilan qo’shma ta’lim dasturlari asosida qabul ko‘rsatkichlariga ko’ra xorijiy yetakchi oliy taʼlim muassasalari bilan hozirgi davrda talab yuqori boʻlgan taʼlim yoʻnalishlari Rossiya Federatsiyasining Qozon federal universiteti filiallari Elabuga instituti bilan 2 ta bakalavr taʼlim yoʻnalishi va 2 ta magistratura mutaxassisligi va Belarus Respublikasining Yanka Kupala nomidagi Grodno davlat universiteti xorijiy oliy talim muassalari bilan 1 ta bakalavr taʼlim yoʻnalishiga qabul qilish rejalashtirildi.{% endblocktrans %}
+            </p>
+            
+        </p>
+        
+    </section>  
+    
+    <section class="section bg-light">
+        <div class="container">
+            <div class="hamkorlar-wrapper mb-4">
+                <h4 class="text-center mb-4">{% blocktrans %}Yanki Kupala nomidagi Grodno davlat universiteti{% endblocktrans %}</h4>
+                <div class="row g-2 text-center hamkor-rasmlar">
+                    <div class="col-md-6 hamkor-rasm"><img src="{% static  '/img/grod.jpg' %}" alt="" style="max-width: 500px;"></div>
+                    <div class="col-md-6 hamkor-rasm"><img src="{% static  '/img/all3.jpg' %}" alt="" style="max-width: 500px;"></div>
+                </div>
+            </div>
+            <div class="hamkorlar-wrapper">
+                <h4 class="text-center mb-4">{% blocktrans %}Qozon (Volga bo'yi) Federal universiteti Elabuga instituti{% endblocktrans %}</h4>
+                <div class="row g-2 text-center hamkor-rasmlar">
+                    <div class="col-md-6 hamkor-rasm"><img src="{% static  '/img/elabuga.jpg' %}" alt="" style="max-width: 500px;"></div>
+                    <div class="col-md-6 hamkor-rasm"><img src="{% static  '/img/img2.jpg' %}" alt="" style="max-width: 500px;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    <!-- Swiper -->
+    <section class="section bg-light">
+        <h2 class="text-center mb-5">{% blocktrans %}Hamkorlarimiz{% endblocktrans %}</h2>
+        <div class="row mb-3">
+            <div class="col-lg-2 col-md-2 col-sm-4 col-4 text-center"><a href="https://kpfu.ru/"><img class="img-hamkor" src="{% static  '/img/hamkor2.png' %}" alt="hamkor 2" height="80px"></a></div>
+            <div class="col-lg-2 col-md-2 col-sm-4 col-4 text-center"><a href="https://rsvpu.ru/"><img class="img-hamkor" src="{% static  '/img/hamkor4.png' %}" alt="hamkor 4" height="80px"></a></div>
+            <div class="col-lg-2 col-md-2 col-sm-4 col-4 text-center"><a href="https://kpfu.ru/elabuga"><img class="img-hamkor" src="{% static  '/img/hamkor6.png' %}" alt="hamkor 6" height="80px"></a></div>
+            <div class="col-lg-2 col-md-2 col-sm-4 col-4 text-center"><a href="https://bspu.ru/"><img class="img-hamkor" src="{% static  '/img/hamkor3.png' %}" alt="hamkor 3" height="80px"></a></div>
+            <div class="col-lg-2 col-md-2 col-sm-4 col-4 text-center"><a href="https://glazov.academica.ru/"><img class="img-hamkor" src="{% static  '/img/hamkor5.jpg' %}" alt="hamkor 5" height="80px"></a></div>
+            <div class="col-lg-2 col-md-2 col-sm-4 col-4 text-center"><a href="https://www.grsu.by/"><img class="img-hamkor" src="{% static  '/img/hamkor1.png' %}" alt="hamkor 1" height="80px"></a></div>
+        </div>
+    </section> 
+    
+    <!-- Ariza -->
+    <section id="ariza" class="ariza ariza-bg bg-light">
+        <div class="ariza-info text-center">
+            <h2 class="text-center mb-4">{% blocktrans %}Qabul 2023-2024{% endblocktrans %}</h2>
+            <p class="text-center mb-4">
+                {% blocktrans %}Muqimiy nomidagi Qo‘qon davlat pedagogika instituti 2023-yilning 5-avgustidan 5-sentyabrga qadar 2023/2024 o‘quv yili uchun bakalavriat va magistratura mutaxassisliklari bo‘yicha Rossiya va Belarus bilan hamkorlikda qo‘shma ta’lim dasturlari bo‘yicha hujjatlar qabul qilishni boshlaydi.{% endblocktrans %}
+            </p>
+            <a class="btn btn-rang" href="{% url 'ariza_yuborish' %}">{% blocktrans %}Ariza yuborish{% endblocktrans %}</a>
+        </div>
+    </section>
+    
+        <!-- YANGILIKLAR -->
+        <section id="news" class="section bg-light news">
+            <div class="container">
+                <h2 class="text-center">{% blocktrans %}So'nggi yangiliklar{% endblocktrans %}</h2>
+                <div class="news-grid">
+                    <div class="news-item">
+                        <div class="news-img mb-3">
+                            <img src="{% static  '/img/img2.jpg' %}" alt="Yangilik rasmi">
+                        </div>
+                        <p>{% blocktrans %}E'lon qabul{% endblocktrans %}</p>
+                        <span style="font-size: 15px; color: #aaa;" class="sana">02.08.2023</span>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-img mb-3">
+                            <img src="{% static  '/img/grodno.jpg' %}" alt="Yangilik rasmi">
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=zvDmpoUPQGA" style="text-decoration: none; color: #222;"><p id="yangilik-matn">{% blocktrans %}Grodno davlat universiteti bilan hamkorlikda{% endblocktrans %} </p></a>
+                        <span style="font-size: 15px; color: #aaa;" class="sana">01.08.2023</span>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-img mb-3">
+                            <img src="{% static  '/img/qozon.jpg' %}" alt="Yangilik rasmi">
+                        </div>
+                        <a href="https://disk.yandex.ru/i/_Dp9kHoNjKNThA" style="text-decoration: none; color: #222;"><p>{% blocktrans %}Qozon federal universiteti filiali Elabuga instituti{% endblocktrans %}</p></a>
+                        <span style="font-size: 15px; color: #aaa;" class="sana">25.07.2023</span>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-img mb-3">
+                            <img src="{% static  '/img/bg1.jpg' %}" alt="Yangilik rasmi">
+                        </div>
+                        <a href="#" style="text-decoration: none; color: #222;"><p>{% blocktrans %}Qabul 2023-2024 qo'shma ta'lim dasturlari{% endblocktrans %}</p></a>
+                        <span style="font-size: 15px; color: #aaa;" class="sana">20.07.2023</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+    
+    <!-- FOOTER -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col col-lg-3 col-md-6">
+                    <h4>IJEP</h4>
+                    <p>{% blocktrans %}Xorijiy oliy ta’lim muassasalari bilan hamkorlikda qo‘shma ta’lim dasturlari asosida kadrlar tayyorlash onlayn platformasi{% endblocktrans %}</p>
+                </div>
+                <div class="footer-col col-lg-3 col-md-6">
+                    <h4>{% blocktrans %}Telefon raqam{% endblocktrans %}</h4>
+                    <ul>
+                        <li><a href="tel: +998917425722">+998 91 742 57 22</a></li>
+                        <li><a href="tel: +998903434865">+998 90 343 48 65</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col col-lg-3 col-md-6">
+                    <h4>{% blocktrans %}Email{% endblocktrans %}</h4>
+                    <ul>
+                        <li><a href="mailto: example@gmail.com">sopkspi@gmail.com</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col col-lg-3 col-md-6">
+                    <h4>{% blocktrans %}Ijtimoiy tarmoqlar{% endblocktrans %}</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="uil uil-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/kspi_sop/"><i class="uil uil-instagram"></i></a>
+                        <a href="https://t.me/kspi_sop_abitur"><i class="uil uil-telegram"></i></a>
+                        <a href="#"><i class="uil uil-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    
+    <!-- JS -->
+    <script src="{% static  '/js/swiper-bundle.min.js' %}"></script>
+    <script src="{% static  '/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static  'js/main.js' %}"></script>
+    
+    <script>
+        const dropdown = document.getElementById("tillar");
+        
+        dropdown.addEventListener("change", function() {
+            
+            document.getElementById("form-til").submit();
+        });
+        let yangilikSarlavhalar = document.querySelectorAll('.yangilik-sarlavha')
+        yangilikSarlavhalar.forEach(function(yangilikSarlavha) {
+            let sarlavha = yangilikSarlavha.textContent.trim();
+            let shortenedSarlavha = sarlavha.substr(0, 25);
+            yangilikSarlavha.textContent = shortenedSarlavha + '...';
+        })
+        
+        
+        let yangilikMatnlar = document.querySelectorAll('.yangilik-matn');
+        yangilikMatnlar.forEach(function(yangilikMatn) {
+            let text = yangilikMatn.textContent.trim();
+            let shortenedText = text.substr(0, 50);
+            yangilikMatn.textContent = shortenedText + '...';
+        })
+        
+    </script>
+</body>
+</html>

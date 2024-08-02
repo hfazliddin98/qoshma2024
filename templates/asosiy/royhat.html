@@ -1,0 +1,150 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="uzb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TITLE -->
+    <title>sinov.kspi.uz</title>
+    
+    <!-- STYLES -->
+    <link rel="stylesheet" href="{% static '/admin/css/style.css' %}">
+    <link rel="stylesheet" href="{% static '/admin/css/normalize.css' %}">
+    
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet" href="{% static '/admin/bootstrap/css/bootstrap.min.css' %}">
+    
+    <!-- ICONS -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+</head>
+<body>
+    {% if user.is_authenticated %} 
+    <!-- HEADER -->
+    <header>
+        <div class="nav-bar container">
+            <a href="{% url 'home' %}" class="logo d-flex align-items-center">
+                <img src="{% static  '/admin/img/logo.png' %}" alt="logo image" width="36px" style="margin-right: 10px;">
+                <div class="logo-name" style="font-size: 0.8em; letter-spacing: 1px; line-height: 1; font-family: 'Poppins', sans-serif;">
+                    IJEP
+                </div>
+            </a>                       
+            
+            <!-- tillar -->
+            <div class="d-flex align-items-center">
+                <form action="{% url 'set_language' %}"  id="form-til"  method="post">
+                    {% csrf_token %}
+                    <input name="next" type="hidden" value="{{ redirect_to }}">
+                    <select class="tillar mx-2" id="tillar" name="language">
+                        {% get_current_language as LANGUAGE_CODE %}
+                        {% get_available_languages as LANGUAGES %}
+                        {% get_language_info_list for LANGUAGES as languages %}
+                        {% for language in languages %}
+                        <option class="til" value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                            {{ language.name_local.capitalize }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </form>          
+                <i class="uil uil-apps nav-menu-btn"></i>
+            </div>
+        </div>
+    </header>
+    
+    <div class="main-content container">
+        <div class="login-form">
+            {% for h in habar %}
+                <h3 style="color: aliceblue;">{{h}}</h3>                            
+            {% endfor %}
+            <form class="kirish-form" method="POST">
+                {% csrf_token %}            
+                <h2 class="text-center">{% blocktrans %}Qo'shma ta'lim dasturlari{% endblocktrans %}</h2>
+                <h3 class="text-center">{% blocktrans %}Admin qo`shish{% endblocktrans %}</h3>
+                <!-- Login input -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="login">{% blocktrans %}Login{% endblocktrans %}</label>
+                    <input name="username" type="text" id="login" class="form-control" placeholder="Login"/>
+                </div>
+
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="login">{% blocktrans %}Familya{% endblocktrans %}</label>
+                    <input name="last_name" type="text" id="login" class="form-control" placeholder="Familya"/>
+                </div>
+
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="login">{% blocktrans %}Ism{% endblocktrans %}</label>
+                    <input name="first_name" type="text" id="login" class="form-control" placeholder="Ism"/>
+                </div>
+
+                           
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form2Example2">{% blocktrans %}Parol{% endblocktrans %}</label>
+                    <input name="password1" type="text" id="form2Example2" class="form-control" placeholder="Parol" />
+                </div>
+
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form2Example2">{% blocktrans %}Parolni tasdiqlash{% endblocktrans %}</label>
+                    <input name="password2" type="text" id="form2Example2" class="form-control" placeholder="Parolni tasdiqlash" />
+                </div>
+            
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary mb-4">Kirish</button>
+            </form>
+        </div>
+    </div>
+    
+    
+    <!-- FOOTER -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col col-lg-3 col-md-6">
+                    <h4>IJEP</h4>
+                    <p>{% blocktrans %}Xorijiy oliy ta’lim muassasalari bilan hamkorlikda qo‘shma ta’lim dasturlari asosida kadrlar tayyorlash onlayn platformasi{% endblocktrans %}</p>
+                </div>
+                <div class="footer-col col-lg-3 col-md-6">
+                    <h4>{% blocktrans %}Telefon raqam{% endblocktrans %}</h4>
+                    <ul>
+                        <li><a href="tel: +998917425722">+998 91 742 57 22</a></li>
+                        <li><a href="tel: +998903434865">+998 90 343 48 65</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col col-lg-3 col-md-6">
+                    <h4>{% blocktrans %}Email{% endblocktrans %}</h4>
+                    <ul>
+                        <li><a href="mailto: example@gmail.com">sopkspi@gmail.com</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col col-lg-3 col-md-6">
+                    <h4>{% blocktrans %}Ijtimoiy tarmoqlar{% endblocktrans %}</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="uil uil-facebook-f"></i></a>
+                        <a href="#"><i class="uil uil-instagram"></i></a>
+                        <a href="https://t.me/kspi_sop_abitur"><i class="uil uil-telegram"></i></a>
+                        <a href="#"><i class="uil uil-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    {% else %}
+    <h2 class="text-center">Bosh sahifaga qaytish</h2>
+    <a class="btn btn-primary" href="{% url 'home' %}">Bosh sahifa</a>
+    {% endif %}
+    
+    <!-- JS -->
+    <script src="{% static  '/js/swiper-bundle.min.js' %}"></script>
+    <script src="{% static  '/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    
+    <script>
+        const dropdown = document.getElementById("tillar");
+        
+        dropdown.addEventListener("change", function() {
+            
+            document.getElementById("form-til").submit();
+        }); 
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="uzb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TITLE -->
+    <title>sinov.kspi.uz</title>
+    
+    <!-- STYLES -->
+    <link rel="stylesheet" href="{% static  '/admin/css/jquery.css' %}">
+    <link rel="stylesheet" href="{% static  '/admin/css/style.css' %}">
+    <link rel="stylesheet" href="{% static  '/admin/css/normalize.css' %}">
+    
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet" href="{% static  '/admin/bootstrap/css/bootstrap.min.css' %}">
+    
+    <!-- ICONS -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+</head>
+<body>
+    {% if user.is_authenticated %} 
+    <!-- HEADER -->
+    <header class="mb-5">
+        <div class="nav-bar container">
+            
+            <a href="{% url 'home' %}" class="logo d-flex align-items-center">
+                <img src="{% static  '/img/logo.png' %}" alt="logo image" width="36px" style="margin-right: 10px;">
+                <div class="logo-name" style="font-size: 0.8em; letter-spacing: 1px; line-height: 1; font-family: 'Poppins', sans-serif;">
+                    IJEP
+                </div>
+            </a>
+            
+            
+            <!-- tillar -->
+            <div class="d-flex align-items-center">
+                
+                <form action="{% url 'set_language' %}"  id="form-til"  method="post">
+                    {% csrf_token %}
+                    <input name="next" type="hidden" value="{{ redirect_to }}">
+                    <select class="tillar mx-2" id="tillar" name="language">
+                        {% get_current_language as LANGUAGE_CODE %}
+                        {% get_available_languages as LANGUAGES %}
+                        {% get_language_info_list for LANGUAGES as languages %}
+                        {% for language in languages %}
+                        <option class="til" value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                            {{ language.name_local.capitalize }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </form> 
+                <i class="uil uil-apps nav-menu-btn"></i>
+                
+                <div>
+                    <a class="btn btn-primary" href="{% url 'logout' %}">Chiqish</a>
+                </div>
+                
+            </div>
+            
+        </div>
+    </header>
+    
+    
+    
+    <div class="main-content container-fluid px-5 py-3">
+        <div class="title d-flex align-items-center justify-content-between mb-3">
+            <h3 class="barcha-arizalar">Barcha arizalar</h3>
+            <a class="btn btn-primary" href="{% url 'bakalavr_csv' %}">Yuklab olish</a>
+        </div>
+        <hr>
+        <!-- Table start -->
+        <table id="example" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>PNFL</th>
+                    <th>Passport seriya</th>
+                    <th>Passport raqam</th>
+                    <th>Familiya</th>
+                    <th>Ism</th>
+                    <th>Sharif</th>
+                    <th>Yo'nalish</th>                    
+                    <th>Telefon raqam</th>
+                    <th>Yashash manzili</th>
+                    <th class="disableFilterBy">Controls</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for t in data %}
+                <tr>
+                    <td class="prova">{{t.id}}</td>
+                    <td class="prova">{{t.jshr}}</td>
+                    <td class="prova">{{t.pasport_serya}}</td>
+                    <td class="prova">{{t.pasport_raqam}}</td>
+                    <td class="prova">{{t.familiya}}</td>
+                    <td class="prova">{{t.ism}}</td>
+                    <td class="prova">{{t.sharif}}</td>
+                    <td class="prova">{{t.yonalish}}</td>          
+                    <td class="prova">{{t.telefon}}</td>
+                    <td class="prova">{{t.viloyat}} {{t.tuman}}</td>
+                    <td class="prova"><a class="btn btn-primary" href="{% url 'malumot' t.pk %}">Ko'rish</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>    
+    <div id="pagination"></div>
+    {% else %}
+    <h2 class="text-center">Bosh sahifaga qaytish</h2>
+    <a class="btn btn-primary" href="{% url 'home' %}">Bosh sahifa</a>
+    {% endif %}
+    
+    <script src="{% static  '/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static  '/admin/js/jquery.js' %}"></script>
+    <script src="{% static  '/admin/js/dataTable.js' %}"></script>
+    <script>
+        const dropdown = document.getElementById("tillar");
+        
+        dropdown.addEventListener("change", function() {
+            
+            document.getElementById("form-til").submit();
+        });
+        new DataTable('#example', {
+            pagingType: 'full_numbers'
+        });
+    </script>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

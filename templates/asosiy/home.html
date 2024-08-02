@@ -1,0 +1,10 @@
+{% if user.is_authenticated %} 
+
+  {% if user.is_superuser or user.lavozim == 'super' %}  
+    {% include 'adminlar/home.html' %}
+  {% endif %} 
+   
+ 
+{% else %}
+  {% include 'talaba/home.html' %}
+{% endif%}
