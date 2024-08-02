@@ -2,3 +2,4 @@ Django
 django-jazzmin
 modeltranslation
 xlwt
+python-gettext

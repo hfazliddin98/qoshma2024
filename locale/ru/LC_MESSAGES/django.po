@@ -1,0 +1,487 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-02 11:32+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+#: .\asosiy\settings.py:115
+msgid "O'zbek"
+msgstr ""
+
+#: .\asosiy\settings.py:116
+msgid "Russion"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:34
+#: .\templates\arizalar\qabul.html:39
+#: .\templates\arizalar\qabul_qilindi.html:34 .\templates\talaba\home.html:35
+msgid "Asosiy"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:35
+#: .\templates\arizalar\ariza_yuborish.html:83
+#: .\templates\arizalar\qabul.html:40
+#: .\templates\arizalar\qabul_qilindi.html:35 .\templates\talaba\home.html:36
+msgid "Online ariza"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:36
+#: .\templates\arizalar\qabul.html:41
+#: .\templates\arizalar\qabul_qilindi.html:36 .\templates\talaba\home.html:37
+msgid "Ma'lumot"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:37
+#: .\templates\arizalar\qabul.html:42
+#: .\templates\arizalar\qabul_qilindi.html:37 .\templates\talaba\home.html:38
+msgid "Yangiliklar"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:38
+#: .\templates\arizalar\qabul.html:43
+#: .\templates\arizalar\qabul_qilindi.html:38 .\templates\talaba\home.html:39
+msgid "Qabul"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:39
+#: .\templates\arizalar\qabul.html:44
+#: .\templates\arizalar\qabul_qilindi.html:39 .\templates\talaba\home.html:40
+msgid "Bog'lanish"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:87
+msgid "Familiya"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:90
+msgid "Familiyangizni kiriting.!!"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:94
+#: .\templates\asosiy\royhat.html:75
+msgid "Ism"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:97
+msgid "Ismingizni kiriting!"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:101
+msgid "Otangizning ismi"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:104
+msgid "Otangizning ismini kiriting!"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:108
+#: .\templates\arizalar\ariza_yuborish.html:267
+#: .\templates\arizalar\qabul.html:320
+#: .\templates\arizalar\qabul_qilindi.html:89 .\templates\asosiy\kirish.html:90
+#: .\templates\asosiy\royhat.html:107 .\templates\talaba\home.html:266
+msgid "Telefon raqam"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:111
+msgid "Telefon raqamingizni kiriting!"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:115
+msgid "Passport seriya"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:118
+msgid "Passport seriyangizni kiriting.!"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:122
+msgid "Passport raqam"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:125
+msgid "Passport raqamingizni kiriting.!"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:129
+msgid "JShShIR"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:132
+msgid "JShShIRni kiriting.!"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:136
+msgid "Passport rasmi"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:139
+msgid "Passport rasmingizni yuklang.!"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:143
+msgid "Bitirgan yili"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:145
+msgid "Yil"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:171
+msgid "Bitirgan yilingizni kiriting.!"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:175
+msgid "Bitirgan ta'lim muassasasi nomi"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:178
+msgid "Bitirgan ta'lim muassasangiz nomini kiriting.!"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:182
+#: .\templates\arizalar\ariza_yuborish.html:185
+msgid "Attestat (diplom) seriya va raqami"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:189
+msgid "Attestat (diplom) rasmi"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:192
+msgid "Diplom rasmini yuklang.!"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:196
+msgid "Topshirilayotgan ta'lim darajasi"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:198
+msgid "Daraja"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:199
+msgid "Bakalavr"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:200
+#: .\templates\arizalar\ariza_yuborish.html:330
+msgid "Magistratura"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:203
+msgid "Darajangizni tanlang.!"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:207
+#: .\templates\arizalar\ariza_yuborish.html:209
+#: .\templates\arizalar\ariza_yuborish.html:326
+msgid "Yo'nalish"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:212
+msgid "Yo'nalishingizni tanlang.!"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:216
+msgid "Yashash manzili"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:218
+#: .\templates\arizalar\ariza_yuborish.html:220
+msgid "Viloyat"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:223
+msgid "Viloyatni tanlang.!"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:227
+#: .\templates\arizalar\ariza_yuborish.html:229
+msgid "Tuman"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:232
+msgid "Tumanni tanlang.!"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:236
+msgid "Ko'cha va uy raqami"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:239
+msgid "Ko'cha va uy raqamini kiriting.!"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:246
+msgid "Shaxsiy ma'lumotlarimdan foydalanishga rozilik bildiraman.!"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:249
+msgid "Shaxsiy ma'lumotlarimdan foydalanishga rozilik bildiraman."
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:254
+msgid "Yuborish"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:263
+msgid "IJEP"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:264
+#: .\templates\arizalar\qabul.html:317
+#: .\templates\arizalar\qabul_qilindi.html:86 .\templates\asosiy\kirish.html:87
+#: .\templates\asosiy\royhat.html:104 .\templates\talaba\home.html:263
+msgid ""
+"Xorijiy oliy ta’lim muassasalari bilan hamkorlikda qo‘shma ta’lim dasturlari "
+"asosida kadrlar tayyorlash onlayn platformasi"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:274
+#: .\templates\arizalar\qabul.html:327
+#: .\templates\arizalar\qabul_qilindi.html:96 .\templates\asosiy\kirish.html:97
+#: .\templates\asosiy\royhat.html:114 .\templates\talaba\home.html:273
+msgid "Email"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:280
+#: .\templates\arizalar\qabul.html:333
+#: .\templates\arizalar\qabul_qilindi.html:102
+#: .\templates\asosiy\kirish.html:103 .\templates\asosiy\royhat.html:120
+#: .\templates\talaba\home.html:279
+msgid "Ijtimoiy tarmoqlar"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:297
+msgid "Izoh: "
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:297
+msgid ""
+"Tanlangan mutaxassislikga topshirishi mumkin bo'lgan bakalavriat "
+"yo'nalishlari "
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:298
+msgid "1. Ona tili va adabiyoti: rus tili va adabiyoti "
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:299
+msgid "2. Ona tili va adabiyoti: o‘zbek tili va adabiyoti "
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:300
+msgid "3. Xorijiy til va adabiyoti (ingliz tili va adabiyoti) "
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:301
+msgid "4. Pedagogika"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:327
+msgid "Psixologiya (amaliy psixologiya)"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:328
+msgid "Ona tili va adabiyoti: Rus tili va adabiyoti"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:329
+msgid "Matematika va informatika"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:332
+msgid "Mutaxassislik"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:333
+msgid "Ta'limda axborot texnologiyalari"
+msgstr ""
+
+#: .\templates\arizalar\ariza_yuborish.html:334
+#: .\templates\arizalar\ariza_yuborish.html:341
+msgid "Ona tili va adabiyoti: Rus tili va adabiyot"
+msgstr ""
+
+#: .\templates\arizalar\qabul_qilindi.html:85 .\templates\asosiy\kirish.html:60
+#: .\templates\asosiy\royhat.html:61 .\templates\talaba\home.html:79
+#: .\templates\talaba\home.html:88 .\templates\talaba\home.html:97
+#: .\templates\talaba\home.html:106 .\templates\talaba\home.html:115
+#: .\templates\talaba\home.html:124
+msgid "Qo'shma ta'lim dasturlari"
+msgstr ""
+
+#: .\templates\asosiy\kirish.html:61
+msgid "Kirish"
+msgstr ""
+
+#: .\templates\asosiy\kirish.html:64 .\templates\asosiy\royhat.html:65
+msgid "Login"
+msgstr ""
+
+#: .\templates\asosiy\kirish.html:70 .\templates\asosiy\royhat.html:82
+msgid "Parol"
+msgstr ""
+
+#: .\templates\asosiy\royhat.html:62
+msgid "Admin qo`shish"
+msgstr ""
+
+#: .\templates\asosiy\royhat.html:70
+msgid "Familya"
+msgstr ""
+
+#: .\templates\asosiy\royhat.html:87
+msgid "Parolni tasdiqlash"
+msgstr ""
+
+#: .\templates\talaba\home.html:80 .\templates\talaba\home.html:116
+msgid ""
+"Qo‘shma ta'lim  dasturlarida taxsil olayotgan talabalar xamkor xorijiy oliy "
+"ta'lim muaasasalari tomonidan o‘tkazilayotgan ilmiy-amaliy konferentsiyalar, "
+"seminar - trening, ijodiy tadbirlar, festivallarda faol ishtirok eti, "
+"sertifikatlar va diplomlar bilan taqdirlanganlar!"
+msgstr ""
+
+#: .\templates\talaba\home.html:82 .\templates\talaba\home.html:91
+#: .\templates\talaba\home.html:100 .\templates\talaba\home.html:109
+#: .\templates\talaba\home.html:118 .\templates\talaba\home.html:127
+#: .\templates\talaba\home.html:215
+msgid "Ariza yuborish"
+msgstr ""
+
+#: .\templates\talaba\home.html:89 .\templates\talaba\home.html:107
+#: .\templates\talaba\home.html:125
+msgid ""
+"Qoʻqon davlat pedagogika instituti 2019-yildan boshlab xorijiy oliy taʼlim "
+"muassasalari bilan hamkorlikda qoʻshma taʼlim dasturlari boʻyicha kadrlar "
+"tayyorlashda talabalarga ikki tomonlama tan olingan diplom berish "
+"imkoniyatini beradigan qoʻshma taʼlim dasturlarining(Double degree programs) "
+"joriy etib kelmoqda!"
+msgstr ""
+
+#: .\templates\talaba\home.html:98
+msgid ""
+"Qo‘shma ta'lim  dasturlarida taxsil olayotgan talabalar xamkor xorijiy oliy "
+"ta'lim muaasasalari tomonidan o‘tkazilayotgan ilmiy-amaliy konferentsiyalar, "
+"seminar - trening,ijodiy tadbirlar, festivallarda faol ishtirok eti, "
+"sertifikatlar va diplomlar bilan taqdirlanganlar!"
+msgstr ""
+
+#: .\templates\talaba\home.html:152
+msgid "Qo'shma ta'lim haqida"
+msgstr ""
+
+#: .\templates\talaba\home.html:156
+msgid ""
+"Qoʻqon davlat pedagogika instituti 2019-yildan boshlab xorijiy oliy taʼlim "
+"muassasalari bilan hamkorlikda qoʻshma taʼlim dasturlari boʻyicha kadrlar "
+"tayyorlashda talabalarga ikki tomonlama tan olingan diplom berish "
+"imkoniyatini beradigan qoʻshma taʼlim dasturlarining (Double degree "
+"programs) joriy etib kelmoqda."
+msgstr ""
+
+#: .\templates\talaba\home.html:159
+msgid ""
+"Hozirda Rossiya Federatsiyasining Qozon federal universiteti, M.Akmulla "
+"nomidagi Boshqird davlat pedagogika universiteti, Rossiya davlat kasb hunar "
+"pedagogika universiteti, Qozon federal universiteti filiallari Elabuga "
+"instituti, V.Korolenko nomidagi Glazov davlat pedagogika instituti, Belarus "
+"Respublikasining Yanka Kupala nomidagi Grodno davlat universiteti xorijiy "
+"oliy talim muassalari bilan 6 ta bakalavr taʼlim yoʻnalishi va 1 ta "
+"magistratura mutaxassisligi boʻyicha talabalar taʼlim olishini taʼminlangan."
+msgstr ""
+
+#: .\templates\talaba\home.html:162
+msgid ""
+"Vazilar Mahkamasining 6-iyul 2023 yildagi 421 sonli qarori bilan "
+"tasdiqlangan “O‘zbekiston Respublikasi va xorijiy hamkor oliy ta'lim "
+"tashkilotlarining qo‘shma ta'lim dasturlari asosida ta'lim faoliyatini "
+"tashkil etish taptibi tug‘risida”gi Nizomi asosida Qo‘qon davlat pedagogika "
+"instituti va xorijiy hamkor oliy ta'lim muassasalari o‘rtasida imzolangan "
+"shartnomaga muvofiq bakalavriyat ta'lim yo'nalishlarida 1 - 4 semestr - "
+"Qo'qon davlat pedagogika institutida, 5-8 semestr - hamkor oliy ta'lim "
+"muassasalarida, magistratura mutaxassisligida 1 kurs – Qo’qon davlat "
+"pedagogika institutida, 2 - kurs hamkor oliy talim muassasalarida tashkil "
+"etilgan. Ta'lim shakli kunduzgi, ta'lim dasturi bo'yicha o'qitish tili rus "
+"tilidir."
+msgstr ""
+
+#: .\templates\talaba\home.html:165
+msgid ""
+"Talabalar qo’shma ta’lim dasrurini  to'liq o'zlashtirgandan so'ng va har "
+"ikki tomon vakillari ishtirokidagi yakuniy attestatsiyadan muvaffaqiyatli "
+"o'tgandan so'ng talabaga qonun hujjatlariga muvofiq xorijiy oliy taʼlim "
+"muassasasi hamda Qoʻqon davlat pedagogika instituti diplomi beriladi"
+msgstr ""
+
+#: .\templates\talaba\home.html:168
+msgid ""
+"2023-2024 o‘quv yili uchun xorijiy oliy ta’lim muassasasi bilan qo’shma "
+"ta’lim dasturlari asosida qabul ko‘rsatkichlariga ko’ra xorijiy yetakchi "
+"oliy taʼlim muassasalari bilan hozirgi davrda talab yuqori boʻlgan taʼlim "
+"yoʻnalishlari Rossiya Federatsiyasining Qozon federal universiteti "
+"filiallari Elabuga instituti bilan 2 ta bakalavr taʼlim yoʻnalishi va 2 ta "
+"magistratura mutaxassisligi va Belarus Respublikasining Yanka Kupala "
+"nomidagi Grodno davlat universiteti xorijiy oliy talim muassalari bilan 1 ta "
+"bakalavr taʼlim yoʻnalishiga qabul qilish rejalashtirildi."
+msgstr ""
+
+#: .\templates\talaba\home.html:178
+msgid "Yanki Kupala nomidagi Grodno davlat universiteti"
+msgstr ""
+
+#: .\templates\talaba\home.html:185
+msgid "Qozon (Volga bo'yi) Federal universiteti Elabuga instituti"
+msgstr ""
+
+#: .\templates\talaba\home.html:197
+msgid "Hamkorlarimiz"
+msgstr ""
+
+#: .\templates\talaba\home.html:211
+msgid "Qabul 2023-2024"
+msgstr ""
+
+#: .\templates\talaba\home.html:213
+msgid ""
+"Muqimiy nomidagi Qo‘qon davlat pedagogika instituti 2023-yilning 5-"
+"avgustidan 5-sentyabrga qadar 2023/2024 o‘quv yili uchun bakalavriat va "
+"magistratura mutaxassisliklari bo‘yicha Rossiya va Belarus bilan hamkorlikda "
+"qo‘shma ta’lim dasturlari bo‘yicha hujjatlar qabul qilishni boshlaydi."
+msgstr ""
+
+#: .\templates\talaba\home.html:222
+msgid "So'nggi yangiliklar"
+msgstr ""
+
+#: .\templates\talaba\home.html:228
+msgid "E'lon qabul"
+msgstr ""
+
+#: .\templates\talaba\home.html:235
+msgid "Grodno davlat universiteti bilan hamkorlikda"
+msgstr ""
+
+#: .\templates\talaba\home.html:242
+msgid "Qozon federal universiteti filiali Elabuga instituti"
+msgstr ""
+
+#: .\templates\talaba\home.html:249
+msgid "Qabul 2023-2024 qo'shma ta'lim dasturlari"
+msgstr ""
