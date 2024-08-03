@@ -18,10 +18,12 @@ def ariza_yuborish(request):
         pasport_raqam = request.POST['pasport_raqam']
         jshr = request.POST['jshr']
         pasport_rasm = request.FILES['pasport_rasm'] 
+        natariyus_pasport = request.FILES['natariyus_pasport'] 
         daraja = request.POST['daraja']      
         yonalish = request.POST['yonalish']
         diplom_serya_raqam = request.POST['diplom_serya_raqam']
         diplom_rasm = request.FILES['diplom_rasm']
+        natariyus_diplom = request.FILES['natariyus_diplom']
         bitirgan_yil = request.POST['bitirgan_yil']
         bitirgan_muassasa = request.POST['bitirgan_muassasa']
         viloyat = request.POST['viloyat']
@@ -43,8 +45,10 @@ def ariza_yuborish(request):
                 telefon = telefon, pasport_serya=pasport_serya,
                 pasport_raqam = pasport_raqam, jshr=jshr,
                 pasport_rasm=pasport_rasm, daraja=daraja, 
+                natariyus_pasport=natariyus_pasport,  
                 yonalish=yonalish, diplom_serya_raqam=diplom_serya_raqam,
                 diplom_rasm=diplom_rasm,bitirgan_yil=bitirgan_yil,
+                natariyus_diplom=natariyus_diplom,
                 bitirgan_muassasa=bitirgan_muassasa,viloyat=viloyat,
                 tuman=tuman,kocha=kocha,rozilik=rozilik_bildirish               
             ) 

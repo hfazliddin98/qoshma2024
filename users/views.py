@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import make_password
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth import login, authenticate, get_user_model
+from django.contrib.auth import login, authenticate, get_user_model, logout
 from .models import User
 from arizalar.models import Yangiliklar
 
@@ -16,6 +16,11 @@ def home(request):
     }
     return render(request, 'asosiy/home.html', contex)
 
+
+@csrf_exempt
+def chiqish(request):
+    logout(request)
+    return redirect('/')
 
 @csrf_exempt
 def kirish(request):

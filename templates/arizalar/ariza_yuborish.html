@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- TITLE -->
-    <title>sinov.kspi.uz</title>
+    <title>ijep.kspi.uz</title>
     
     <!-- STYLES -->
     <link rel="stylesheet" href="{% static  '/css/style.css' %}">
@@ -140,9 +140,17 @@
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
+                <label for="passport-rasm" class="form-label">{% blocktrans %}Passport rasmi(natariusdan tarjima qilingani){% endblocktrans %}</label>
+                <input name="natariyus_pasport" type="file" class="form-control" id="passport-rasm" accept=".png, .jpg, .jpeg" placeholder="Passport rasmi" required>
+                <div class="invalid-feedback">
+                    {% blocktrans %}Passport rasmingizni yuklang.!{% endblocktrans %}
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
                 <label for="yil" class="form-label">{% blocktrans %}Bitirgan yili{% endblocktrans %}</label>
                 <select name="bitirgan_yil" class="form-select" id="yil" required>
                     <option value="">{% blocktrans %}Yil{% endblocktrans %}</option>
+                    <option value="2024">2024</option>
                     <option value="2023">2023</option>
                     <option value="2022">2022</option>
                     <option value="2021">2021</option>
@@ -188,6 +196,13 @@
             <div class="col-lg-4 col-md-6">
                 <label for="diplom-rasm" class="form-label">{% blocktrans %}Attestat (diplom) rasmi{% endblocktrans %}</label>
                 <input name="diplom_rasm" type="file" class="form-control" id="diplom-rasm" required>
+                <div class="invalid-feedback">
+                    {% blocktrans %}Diplom rasmini yuklang.!{% endblocktrans %}
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <label for="diplom-rasm" class="form-label">{% blocktrans %}Attestat (diplom) rasmi(natariusdan tarjima qilingani){% endblocktrans %}</label>
+                <input name="natariyus_diplom" type="file" class="form-control" id="diplom-rasm" required>
                 <div class="invalid-feedback">
                     {% blocktrans %}Diplom rasmini yuklang.!{% endblocktrans %}
                 </div>
